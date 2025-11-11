@@ -1,0 +1,12 @@
+# Step 1: Upload the ZIP file
+from google.colab import files
+uploaded = files.upload()   # Choose your 'archive.zip' or similar file
+
+# Step 2: Unzip (use the correct filename shown after upload)
+!unzip -q "archive (6).zip" -d "/content/HAR_Dataset"
+
+# If Colab renamed it to something like archive (6) (1).zip, then run:
+# !unzip -q "archive (6) (1).zip" -d "/content/HAR_Dataset"
+
+# Step 3: Check extracted folders
+!ls "/content/HAR_Dataset"

@@ -1,0 +1,18 @@
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+
+# Scale features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Encode labels (convert to one-hot)
+encoder = OneHotEncoder(sparse_output=False)
+y_train_encoded = encoder.fit_transform(y_train.values.reshape(-1,1))
+y_test_encoded = encoder.transform(y_test.values.reshape(-1,1))
+
+X_train_seq = X_train_scaled.reshape((X_train_scaled.shape[0], 1, X_train_scaled.shape[1]))
+X_test_seq = X_test_scaled.reshape((X_test_scaled.shape[0], 1, X_test_scaled.shape[1]))
+
+print("Train reshaped:", X_train_seq.shape)
+print("Test reshaped:", X_test_seq.shape)
